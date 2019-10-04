@@ -1,13 +1,3 @@
-var answers = [
-	{value: 'red', stat: 367},
-	{value: 'green', stat: 298},
-	{value: 'yellow', stat: 256},
-	{value: 'blue', stat: 178},
-	{value: 'deep purple', stat: 103},
-	{value: 'violet', stat: 65},
-	{value: 'pink', stat: 43}
-];
-
 //loop through all the answers and place them hidden into the dom
 for(var i = 0; i<answers.length; i++){
 	var answerRow = '<div class="answer" id="' + stripWhitespace(answers[i].value) + '">' +

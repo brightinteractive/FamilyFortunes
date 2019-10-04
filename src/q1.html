@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>Family Fortunes</title>
+
+    <!--Styles-->
+    <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="assets/img/logo.png" />
+        </div>
+
+
+        <h1>What are the 7 most popular colours?</h1>
+        <div class="scoreboard">
+            <div class="answers">
+                <div class="answer-table" id="answerTable">
+                </div>
+
+                <div class="scoreboard-buttons">
+                    <form class="guess-form">
+                        <input type="text" class="textfield" id="guess" />
+                        <input type="submit" class="button" id="submit" value="Check" />
+                    </form>
+
+                    <button style="display: none;" class="button show-answers" id="showAnswers">Show Answers</button>
+                </div>
+            </div>
+
+            <div class="crosses" id="crosses">
+                <img class="hidden" src="assets/img/cross.png" />
+                <img class="hidden" src="assets/img/cross.png" />
+                <img class="hidden" src="assets/img/cross.png" />
+            </div>
+
+        </div>
+
+        <ul class="guess-list" id="guessList"></ul>
+
+        <button id="clear">x</button>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        var answers = [
+			{value: 'red', stat: 367},
+			{value: 'green', stat: 298},
+			{value: 'yellow', stat: 256},
+			{value: 'blue', stat: 178},
+			{value: 'deep purple', stat: 103},
+			{value: 'violet', stat: 65},
+			{value: 'pink', stat: 43}
+		];
+    </script>
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>
