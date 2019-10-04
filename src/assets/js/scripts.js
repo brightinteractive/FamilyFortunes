@@ -3,14 +3,14 @@ var answers = [
 	{value: 'green', stat: 298},
 	{value: 'yellow', stat: 256},
 	{value: 'blue', stat: 178},
-	{value: 'purple', stat: 103},
+	{value: 'deep purple', stat: 103},
 	{value: 'violet', stat: 65},
 	{value: 'pink', stat: 43}
 ];
 
 //loop through all the answers and place them hidden into the dom
 for(var i = 0; i<answers.length; i++){
-	var answerRow = '<div class="answer" id="' + answers[i].value + '">' +
+	var answerRow = '<div class="answer" id="' + stripWhitespace(answers[i].value) + '">' +
 	                '    <div class="answer__number">' + parseInt(i + 1) + '</div>' +
 	                '    <div class="answer__value"><span style="display: none;">' + answers[i].value + '</span></div>' +
 	                '    <div class="answer__stat"><span style="display: none;">' + answers[i].stat + '</span></div>' +
@@ -41,7 +41,7 @@ $('form').submit(function(e){
 			correctGuesses.push(guess);
 			localStorage.setItem('correctGuesses', JSON.stringify(correctGuesses));
 
-			$('#' + guess + ' span').show(); //show guess on the scoreboard
+			$('#' + stripWhitespace(guess) + ' span').show(); //show guess on the scoreboard
 
 			//check to see if top answer
 			// if(answers[0].value == guess){
@@ -111,6 +111,10 @@ function revealGuesses(){
 		$('#showAnswers').show();
 		$('form input#submit').prop("disabled", true);
 	}
+}
+
+function stripWhitespace(sentence) {
+	return sentence.replace(/\s/g, '');
 }
 
 //remove localstorage items and refresh the browser
