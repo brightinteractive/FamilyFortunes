@@ -20,24 +20,32 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Inter';
+    src: url('../font/Inter-Regular.woff2') format('woff2'),
+        url('../font/Inter-Regular.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
 
 
 html {
 	height: 100%;
 	color: white;
-	font-family: 'Lato', Arial, sans-serif;
 }
 
 body {
 	background: #dbccee;
 	padding: 0;
 	margin: 0;
+	font-family: "Inter", Arial !important;
 }
 
 .container {
 	box-sizing: border-box;
-	margin: 60px auto;
-	max-width: 900px;
+	margin: 30px auto;
+	max-width: 930px;
 }
 
 .logo-container {
@@ -57,7 +65,7 @@ body {
 // -------------------------------
 .header {
 	text-align: center;
-	padding: 52px 0;
+	padding: 40px 0;
 	position: relative;
 
 	width: 100%;
@@ -66,14 +74,15 @@ body {
 	&::before {
 		content: '';
 		display: block;
+	    width: 1200px;
+	    height: 400px;
 
-		width: 1200px;
-		height: 600px;
-		border-radius: 100%;
+	    border-radius: 100%;
 
-		position: absolute;
-		top: -400px;
-		left: 50%;
+	    position: absolute;
+	    top: -240px;
+	    left: 50%;
+
 		transform: translateX(-50%);
 		background: #4b00a9;
 	}
@@ -88,7 +97,6 @@ body {
 // Generic layout
 // -------------------------------
 .container {
-	text-align: center;
 }
 
 
@@ -98,15 +106,42 @@ body {
 	font-family: 'Netto Pro';
 	color: #4b00a9;
 	font-size: 3em;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
 }
-
-
 
 // Table components
 // -------------------------------
+.answer-table .answer>div {
+	background: #4b02a9;
+	text-shadow: none;
+}
+
+.answer-table .answer {
+	background: none;
+    border-color: transparent;
+}
+
+.crosses .show {
+	margin: 20px 10px;
+}
+
+.answer__number {
+	text-align: center;
+	background: #4b02a9;
+}
+
+.answer-table .answer__number {
+	text-align: center;
+}
+
+.crosses {
+	text-align: center;
+}
 
 
-// Misc
+// Buttons
 // -------------------------------
 
 .reset-button#clear {
@@ -115,4 +150,25 @@ body {
 	left: 20px;
 	opacity: 0.4;
 	color: #4b00a9;
+}
+
+.button {
+	background: #ffc700;
+	box-shadow: none;
+	text-shadow: none;
+}
+
+.guess-list li,
+.guess-form .textfield {
+	box-shadow: none;
+}
+
+.guess-form .textfield {
+	background: #fff;
+	color: #000;
+	text-shadow: none; 
+}
+
+.guess-form {
+	border: 0;
 }
