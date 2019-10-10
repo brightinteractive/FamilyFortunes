@@ -12,14 +12,21 @@
 </head>
 
 <body>
+    
+    <header class="header">
+        <img src="assets/img/logo.png" />
+    </header>
 
     <div class="container">
-        <div class="logo-container">
-            <img src="assets/img/logo.png" />
+
+        <h1 class="title">Top Benefits Of Adopting Agile?</h1>
+
+        <div class="crosses" id="crosses">
+            <img class="hidden" src="assets/img/cross.png" />
+            <img class="hidden" src="assets/img/cross.png" />
+            <img class="hidden" src="assets/img/cross.png" />
         </div>
-
-
-        <h1>Top Benefits Of Adopting Agile</h1>
+        
         <div class="scoreboard">
             <div class="answers">
                 <div class="answer-table" id="answerTable">
@@ -34,18 +41,11 @@
                     <button style="display: none;" class="button show-answers" id="showAnswers">Show Answers</button>
                 </div>
             </div>
-
-            <div class="crosses" id="crosses">
-                <img class="hidden" src="assets/img/cross.png" />
-                <img class="hidden" src="assets/img/cross.png" />
-                <img class="hidden" src="assets/img/cross.png" />
-            </div>
-
         </div>
 
         <ul class="guess-list" id="guessList"></ul>
 
-        <button id="clear">x</button>
+        <button id="clear" class="reset-button">Reset</button>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

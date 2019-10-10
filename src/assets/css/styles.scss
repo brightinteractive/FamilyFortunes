@@ -11,6 +11,17 @@
 @import 'components/scoreboard';
 @import 'components/guess-list';
 
+
+@font-face {
+    font-family: 'Netto Pro';
+    src: url('../font/NettoPro-Bold.woff2') format('woff2'),
+        url('../font/NettoPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
 html {
 	height: 100%;
 	color: white;
@@ -18,18 +29,15 @@ html {
 }
 
 body {
-	background: linear-gradient(to bottom, #151b4d, #151b4d 85%, #2b3570 85%, #2b3570);
-	background-size: 100% 20px;
+	background: #dbccee;
 	padding: 0;
 	margin: 0;
-	height: 100%;
 }
 
 .container {
-	padding: 5% 15%;
 	box-sizing: border-box;
-	position: relative;
-	min-height: 100%;
+	margin: 60px auto;
+	max-width: 900px;
 }
 
 .logo-container {
@@ -43,4 +51,68 @@ body {
 	top: 10px;
 	background: transparent;
 	border: none;
+}
+
+// Header
+// -------------------------------
+.header {
+	text-align: center;
+	padding: 52px 0;
+	position: relative;
+
+	width: 100%;
+
+
+	&::before {
+		content: '';
+		display: block;
+
+		width: 1200px;
+		height: 600px;
+		border-radius: 100%;
+
+		position: absolute;
+		top: -400px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: #4b00a9;
+	}
+
+	img {
+		position: relative;
+	}
+}
+
+
+
+// Generic layout
+// -------------------------------
+.container {
+	text-align: center;
+}
+
+
+// Typography
+// -------------------------------
+.title {
+	font-family: 'Netto Pro';
+	color: #4b00a9;
+	font-size: 3em;
+}
+
+
+
+// Table components
+// -------------------------------
+
+
+// Misc
+// -------------------------------
+
+.reset-button#clear {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	opacity: 0.4;
+	color: #4b00a9;
 }
