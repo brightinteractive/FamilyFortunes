@@ -19,6 +19,7 @@ var config = {
 	html: 'src/*.html',
 	audio: 'src/assets/audio/**/*',
 	images: 'src/assets/img/**/*',
+	fonts: 'src/assets/font/*',
 	tmp: 'tmp/',
 	dist: 'dist/',
 	production: !!util.env.production
@@ -80,6 +81,13 @@ gulp.task('images', function () {
 });
 
 
+// FONTS
+gulp.task('fonts', function () {
+	gulp.src(config.fonts)
+		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/font'))
+});
+
+
 // AUDIO
 gulp.task('audio', function () {
 	gulp.src(config.audio)
@@ -116,5 +124,5 @@ gulp.task('watch', function () {
 
 
 // DEFAULT TASK
-gulp.task('default', ['sass', 'images', 'js', 'html', 'audio', 'browser-sync', 'watch']);
-gulp.task('build', ['sass', 'images', 'js', 'html', 'audio']);
+gulp.task('default', ['sass', 'images', 'js', 'html', 'audio', 'fonts', 'browser-sync', 'watch']);
+gulp.task('build', ['sass', 'images', 'js', 'html', 'audio', 'fonts']);
