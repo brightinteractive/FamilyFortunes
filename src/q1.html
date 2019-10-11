@@ -13,13 +13,21 @@
 
 <body>
 
+    <header class="header">
+        <img src="assets/img/logo.png" />
+    </header>
+
     <div class="container">
-        <div class="logo-container">
-            <img src="assets/img/logo.png" />
+
+        <h1 class="title">Top Benefits Of Adopting Agile?</h1>
+
+        <div class="crosses" id="crosses">
+            <img class="hidden" src="assets/img/cross.png" />
+            <img class="hidden" src="assets/img/cross.png" />
+            <img class="hidden" src="assets/img/cross.png" />
+            <img class="hidden" src="assets/img/cross.png" />
         </div>
 
-
-        <h1>Top Benefits Of Adopting Agile</h1>
         <div class="scoreboard">
             <div class="answers">
                 <div class="answer-table" id="answerTable">
@@ -27,36 +35,29 @@
 
                 <div class="scoreboard-buttons">
                     <form class="guess-form">
-                        <input type="text" class="textfield" id="guess" />
+                        <input type="text" class="textfield" id="guess" autocomplete="off" />
                         <input type="submit" class="button" id="submit" value="Check" />
                     </form>
 
                     <button style="display: none;" class="button show-answers" id="showAnswers">Show Answers</button>
                 </div>
             </div>
-
-            <div class="crosses" id="crosses">
-                <img class="hidden" src="assets/img/cross.png" />
-                <img class="hidden" src="assets/img/cross.png" />
-                <img class="hidden" src="assets/img/cross.png" />
-            </div>
-
         </div>
 
         <ul class="guess-list" id="guessList"></ul>
 
-        <button id="clear">x</button>
+        <button id="clear" class="reset-button">Reset</button>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script>
         var answers = [
-			{value: 'easier to change priorities', stat: 38},
-			{value: 'project visibility', stat: 34},
-			{value: 'business and it alignment', stat: 33},
-			{value: 'team morale', stat: 33},
-			{value: 'delivery speed', stat: 32},
-			{value: 'increased productivity', stat: 30}
+			{value: 'easier to change priorities', stat: 38, bonus: false},
+			{value: 'project visibility', stat: 34, bonus: false},
+			{value: 'business and it alignment', stat: 33, bonus: false},
+			{value: 'team morale', stat: 33, bonus: true},
+			{value: 'delivery speed', stat: 32, bonus: false},
+			{value: 'increased productivity', stat: 30, bonus: false}
 		];
     </script>
     <script src="assets/js/scripts.js"></script>
