@@ -23,11 +23,16 @@ $('form').submit(function(e){
 
 	var $input = $('form input#guess');
 	var guess = $input.val().toLowerCase();
-	var correct = checkAnswer(guess);
+	var answer = checkAnswer(guess);
 
 	if(guess != ''){
-		if(correct){
-			correctAudio.play();
+		if(answer != null){
+			if (answer.bonus) {
+				bonusAudio.play();
+			}
+			else {
+				correctAudio.play();
+			}
 			correctGuesses.push(guess);
 			localStorage.setItem('correctGuesses', JSON.stringify(correctGuesses));
 
@@ -59,17 +64,14 @@ $('form').submit(function(e){
 });
 
 function checkAnswer(guess){
-	var exists = false;
-
 	//loop through the answers array to see if guess exists
 	for(var i = 0; i<answers.length; i++){
 		if(answers[i].value.toLowerCase() == guess){
-			exists = true;
-			break;
+			return answers[i];
 		}
 	}
 
-	return exists;
+	return null;
 }
 
 function showCross(number){
@@ -126,3 +128,6 @@ wrongAudio.setAttribute('src', 'assets/audio/wrong.mp3');
 
 var correctAudio = document.createElement('audio');
 correctAudio.setAttribute('src', 'assets/audio/correct.wav');
+
+var bonusAudio = document.createElement('audio');
+bonusAudio.setAttribute('src', 'assets/audio/siren.mp3');

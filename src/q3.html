@@ -47,17 +47,17 @@
 
         <button id="clear">x</button>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script>
         var answers = [
-			{value: 'standup', stat: 45},
-			{value: 'sprint planning', stat: 34},
-			{value: 'retrospective', stat: 34},
-			{value: 'sprint review', stat: 34},
-			{value: 'short iterations', stat: 21},
-			{value: 'team estimation', stat: 16},
-			{value: 'kanban', stat: 16}
+			{value: 'standup', stat: 45, bonus: false},
+			{value: 'sprint planning', stat: 34, bonus: false},
+			{value: 'retrospective', stat: 34, bonus: true},
+			{value: 'sprint review', stat: 34, bonus: false},
+			{value: 'short iterations', stat: 21, bonus: false},
+			{value: 'team estimation', stat: 16, bonus: false},
+			{value: 'kanban', stat: 16, bonus: false}
 		];
     </script>
     <script src="assets/js/scripts.js"></script>
