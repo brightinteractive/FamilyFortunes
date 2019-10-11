@@ -8,6 +8,12 @@ for(var i = 0; i<answers.length; i++){
 
 	$('#answerTable').append(answerRow);
 }
+var scoreRow = '<div class="answer" id="totalScore">' +
+				'    <div class="answer__number"></div>' +
+				'    <div class="answer__value"><span>total</span></div>' +
+				'    <div class="answer__stat"><span id="runningTotal">0</span></div>' +
+				'</div>';
+$('#answerTable').append(scoreRow);
 
 //create arrays for incorrect and correct guesses that are either blank or collected from local storage
 var incorrectGuesses = JSON.parse(localStorage.getItem('incorrectGuesses') || "[]");
@@ -37,6 +43,9 @@ $('form').submit(function(e){
 			localStorage.setItem('correctGuesses', JSON.stringify(correctGuesses));
 
 			$('#' + stripWhitespace(guess) + ' span').show(); //show guess on the scoreboard
+			currentTotal = parseInt($('#runningTotal').text());
+			console.log(currentTotal);
+			$('#runningTotal').text(currentTotal + answer.stat);
 
 			//check to see if top answer
 			// if(answers[0].value == guess){
