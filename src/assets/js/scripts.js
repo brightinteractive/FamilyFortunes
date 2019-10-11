@@ -35,11 +35,11 @@ $('form').submit(function(e){
 			incorrectGuesses.push(guess);
 			localStorage.setItem('incorrectGuesses', JSON.stringify(incorrectGuesses));
 
-			showCross();
+			showCross(incorrectGuesses.length-1);
 
 			$('ul#guessList').append('<li>' + guess + '</li>');
 
-			if(incorrectGuesses.length >= 3){
+			if(incorrectGuesses.length >= 4){
 				$('form input#submit').prop("disabled", true);
 				$('#showAnswers').show();
 			}
@@ -63,10 +63,17 @@ function checkAnswer(guess){
 }
 
 function showCross(number){
+	console.log(number);
 	if(number == null){
 		$('#crosses img.hidden').first().removeClass('hidden').addClass('show');
-	}else{
-		$('#crosses img.hidden').slice(0,number).removeClass('hidden').addClass('show');
+	} else {
+		$('#crosses img').eq(number).removeClass('hidden').addClass('show');
+	}
+}
+
+function showAllCrosses() {
+	for (var i=0; i<4; i++){
+		showCross(i);
 	}
 }
 
@@ -79,7 +86,7 @@ function revealGuesses(){
 		$('#' + correctGuesses[c] + ' span').show();
 	}
 
-	showCross(incorrectGuesses.length);
+	showAllCrosses();
 
 	if(incorrectGuesses.length >= 3){
 		$('#showAnswers').show();
