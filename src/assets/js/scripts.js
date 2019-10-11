@@ -43,6 +43,10 @@ $('form').submit(function(e){
 			currentTotal = parseInt($('#runningTotal').text());
 			$('#runningTotal').text(currentTotal + answer.stat);
 
+			if (incorrectGuesses.length == 3) {
+				setupPostGameInputs();
+			}
+
 		} else {
 			wrongAudio.play();
 			incorrectGuesses.push(guess);
@@ -53,8 +57,7 @@ $('form').submit(function(e){
 			$('ul#guessList').append('<li>' + guess + '</li>');
 
 			if(incorrectGuesses.length >= 4){
-				$('form input#submit').prop("disabled", true);
-				$('#showAnswers').show();
+				setupPostGameInputs();
 			}
 		}
 	}
@@ -73,7 +76,6 @@ function checkAnswer(guess){
 }
 
 function showCross(number){
-	console.log(number);
 	if(number == null){
 		$('#crosses img.hidden').first().removeClass('hidden').addClass('show');
 	} else {
@@ -106,6 +108,11 @@ function revealGuesses(){
 
 function stripWhitespace(sentence) {
 	return sentence.replace(/\s/g, '');
+}
+
+function setupPostGameInputs() {
+	$('form input#submit').prop("disabled", true);
+	$('#showAnswers').show();
 }
 
 $('#clear').on('click', function(){
