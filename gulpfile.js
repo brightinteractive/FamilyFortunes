@@ -27,7 +27,7 @@ var config = {
 
 
 // SASS
-gulp.task("sass", function () {
+gulp.task("sass", done => {
 	gulp.src(config.scss)
 		.pipe(plumber())
 		.pipe(config.production ? util.noop() : sourcemaps.init())
@@ -42,12 +42,13 @@ gulp.task("sass", function () {
 		}))
 		.pipe(config.production ? util.noop() : sourcemaps.write())
 		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/css'))
-		.pipe(reload())
+		.pipe(reload());
+	done();
 });
 
 
 // JS
-gulp.task('js', function () {
+gulp.task('js', done => {
 	gulp.src(config.js)
 		.pipe(plumber())
 		.pipe(jshint())
@@ -58,11 +59,12 @@ gulp.task('js', function () {
 		.pipe(config.production ? util.noop() : sourcemaps.write())
 		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/js'))
 		.pipe(reload());
+	done();
 });
 
 
 // HTML
-gulp.task('html', function () {
+gulp.task('html', done => {
 	gulp.src(config.html)
 		.pipe(changed(config.production ? config.dist : config.tmp))
 		.pipe(plumber())
@@ -71,58 +73,65 @@ gulp.task('html', function () {
 		}) : util.noop())
 		.pipe(gulp.dest(config.production ? config.dist : config.tmp))
 		.pipe(reload());
+	done();
 });
 
 
 // IMAGES
-gulp.task('images', function () {
+gulp.task('images', done => {
 	gulp.src(config.images)
-		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/img'))
+		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/img'));
+	done();
 });
 
 
 // FONTS
-gulp.task('fonts', function () {
+gulp.task('fonts', done => {
 	gulp.src(config.fonts)
-		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/font'))
+		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/font'));
+	done();
 });
 
 
 // AUDIO
-gulp.task('audio', function () {
+gulp.task('audio', done => {
 	gulp.src(config.audio)
-		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/audio'))
+		.pipe(gulp.dest((config.production ? config.dist : config.tmp) + 'assets/audio'));
+	done();
 });
 
 
 // CLEAN
-gulp.task('clean', function () {
+gulp.task('clean', done => {
 	gulp.src(['tmp', 'dist'], {
 			read: false
 		})
 		.pipe(clean());
+	done();
 });
 
 
 // BROWSERSYNC
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', done => {
 	browserSync.init({
 		server: {
 			baseDir: config.production ? config.dist : config.tmp
 		}
 	});
+	done();
 });
 
 
 // WATCH
-gulp.task('watch', function () {
-	gulp.watch('src/assets/css/**/*.scss', ['sass'])
-	gulp.watch('src/assets/img/**/*', ['images'])
-	gulp.watch('src/assets/js/**/*.js', ['js'])
-	gulp.watch(['src/*.html'], ['html'])
+gulp.task('watch', done => {
+	gulp.watch('src/assets/css/**/*.scss', gulp.series('sass'));
+	gulp.watch('src/assets/img/**/*', gulp.series('images'));
+	gulp.watch('src/assets/js/**/*.js', gulp.series('js'));
+	gulp.watch(['src/*.html'], gulp.series('html'));
+	done();
 });
 
 
 // DEFAULT TASK
-gulp.task('default', ['sass', 'images', 'js', 'html', 'audio', 'fonts', 'browser-sync', 'watch']);
-gulp.task('build', ['sass', 'images', 'js', 'html', 'audio', 'fonts']);
+gulp.task('default', gulp.series('sass', 'images', 'js', 'html', 'audio', 'fonts', 'browser-sync', 'watch'), done => {done();});
+gulp.task('build', gulp.series('sass', 'images', 'js', 'html', 'audio', 'fonts'), done => {done();});
