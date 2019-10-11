@@ -140,6 +140,10 @@ body {
 	text-align: center;
 }
 
+#total-score {
+    color: #ffc700;
+}
+
 
 // Buttons
 // -------------------------------
@@ -166,7 +170,7 @@ body {
 .guess-form .textfield {
 	background: #fff;
 	color: #000;
-	text-shadow: none; 
+	text-shadow: none;
 }
 
 .guess-form {

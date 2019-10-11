@@ -7,7 +7,7 @@ for(var i = 0; i<answers.length; i++){
 
 	$('#answerTable').append(answerRow);
 }
-var scoreRow = '<div class="answer" id="totalScore">' +
+var scoreRow = '<div class="answer" id="total-score">' +
 				'    <div class="answer__number"></div>' +
 				'    <div class="answer__value"><span>total</span></div>' +
 				'    <div class="answer__stat"><span id="runningTotal">0</span></div>' +
