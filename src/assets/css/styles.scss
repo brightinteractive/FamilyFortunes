@@ -61,6 +61,14 @@ body {
 	border: none;
 }
 
+#intro-image {
+	position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 // Header
 // -------------------------------
 .header {
@@ -96,7 +104,14 @@ body {
 
 // Generic layout
 // -------------------------------
-.container {
+
+.container-intro {
+	background: #4b00a9;
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	height: 100%;
+  	width: 100%;
 }
 
 
@@ -148,12 +163,22 @@ body {
 // Buttons
 // -------------------------------
 
-.reset-button#clear {
+.action-button {
 	position: absolute;
-	top: 20px;
-	left: 20px;
 	opacity: 0.4;
 	color: #4b00a9;
+	top: 10px;
+	color: rgba(white, .5);
+	background: transparent;
+	border: none;
+}
+
+#clear {
+	left: 10px;
+}
+
+#next {
+	right: 10px;
 }
 
 .button {
