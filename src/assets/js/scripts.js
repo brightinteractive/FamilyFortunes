@@ -14,10 +14,8 @@ var scoreRow = '<div class="answer" id="total-score">' +
 				'</div>';
 $('#answerTable').append(scoreRow);
 
-var incorrectGuesses = JSON.parse(localStorage.getItem('incorrectGuesses') || "[]");
-var correctGuesses = JSON.parse(localStorage.getItem('correctGuesses') || "[]");
-
-resetGuessStorage();
+var incorrectGuesses = [];
+var correctGuesses = [];
 
 $('form').submit(function(e){
 	e.preventDefault();
@@ -127,6 +125,7 @@ $('#showAnswers').on('click', function(){
 	$('.answer span').show();
 });
 
+resetGuessStorage();
 
 var wrongAudio = document.createElement('audio');
 wrongAudio.setAttribute('src', 'assets/audio/wrong.mp3');
