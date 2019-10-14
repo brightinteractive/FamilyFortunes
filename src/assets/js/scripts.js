@@ -17,9 +17,7 @@ $('#answerTable').append(scoreRow);
 var incorrectGuesses = JSON.parse(localStorage.getItem('incorrectGuesses') || "[]");
 var correctGuesses = JSON.parse(localStorage.getItem('correctGuesses') || "[]");
 
-if((incorrectGuesses.length > 0) || (correctGuesses.length > 0)) {
-	revealGuesses();
-}
+resetGuessStorage();
 
 $('form').submit(function(e){
 	e.preventDefault();
@@ -115,10 +113,13 @@ function setupPostGameInputs() {
 	$('#showAnswers').show();
 }
 
-$('#clear').on('click', function(){
+function resetGuessStorage() {
 	localStorage.removeItem('incorrectGuesses');
 	localStorage.removeItem('correctGuesses');
+}
 
+$('#clear').on('click', function(){
+	resetGuessStorage();
 	location.reload();
 });
 
